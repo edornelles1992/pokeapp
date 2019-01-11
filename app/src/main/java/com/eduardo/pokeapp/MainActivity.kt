@@ -3,10 +3,12 @@ package com.eduardo.pokeapp
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
-import android.R.attr.gravity
 import android.support.v7.app.ActionBar
+import android.util.Log
+import android.view.View
 import android.view.ViewGroup
-
+import com.eduardo.pokeaap.service.PokeService
+import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,5 +21,15 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setCustomView(R.layout.header)
         val p = ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         p.gravity = Gravity.CENTER
+    }
+
+    fun testeAPI(view: View) {
+        val callback = fun(data: JSONObject?){
+            if (data != null) {
+                Log.d("A","Tipos: " + data.getString("count")!!)
+            }
+        }
+        PokeService.getTypes(callback)
+
     }
 }
