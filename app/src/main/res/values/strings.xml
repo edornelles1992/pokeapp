@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Poke-App</string>
+    <string name="choiceTypePokemon">Escolha o tipo do pokémon desejado:</string>
+    <string name="welcome">Bem-vindo ao Poke-App!</string>
 </resources>
