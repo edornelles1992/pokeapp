@@ -11,7 +11,7 @@ import com.eduardo.pokeapp.R
 import com.eduardo.pokeapp.models.Type
 
 
-class TypesAdapter : BaseAdapter {
+class TypeAdapter : BaseAdapter {
 
     private var typesList = ArrayList<Type>()
     private var context: Context? = null
@@ -19,10 +19,10 @@ class TypesAdapter : BaseAdapter {
 
     constructor(
         context: Context,
-        notesList: ArrayList<Type>,
+        list: ArrayList<Type>,
         layoutInflater: LayoutInflater
     ) : super() {
-        this.typesList = notesList
+        this.typesList = list
         this.context = context
         this.layoutInflater = layoutInflater
     }

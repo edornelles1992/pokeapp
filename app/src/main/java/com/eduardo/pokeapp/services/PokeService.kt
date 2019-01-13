@@ -11,35 +11,12 @@ import org.json.JSONObject
  */
 object PokeService {
 
-    private val MAIN_URL = "https://pokeapi.co/api/v2/"
-    private val TYPES = MAIN_URL + "type/"
-
     /**
-     * Request Pokemon Types.
+     * Request to PokeAPI with an received URL string and a callback
+     * to do something with the data.
      */
-    fun getTypes(callback: (JSONObject?) -> Unit) {
-        var data : JSONObject? = null;
-
-        Fuel.get(TYPES).responseJson() { request, response, result ->
-            when (result) {
-                is Result.Failure -> {
-                    data = result.getException() as JSONObject
-                    callback.invoke(data)
-                }
-                is Result.Success -> {
-                    data = result.get().obj()
-                    callback.invoke(data)
-                }
-            }
-        }
-
-    }
-
-    /**
-     * Request Type Details.
-     */
-    fun getTypeDetail(callback: (JSONObject?) -> Unit, url : String) {
-        var data : JSONObject? = null;
+    fun requestPokeApi(callback: (JSONObject?) -> Unit, url: String) {
+        var data: JSONObject? = null;
 
         Fuel.get(url).responseJson() { request, response, result ->
             when (result) {
@@ -53,6 +30,5 @@ object PokeService {
                 }
             }
         }
-
     }
 }

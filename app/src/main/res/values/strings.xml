@@ -2,4 +2,7 @@
     <string name="app_name">Poke-App</string>
     <string name="choiceTypePokemon">Escolha o tipo do pokémon desejado:</string>
     <string name="welcome">Bem-vindo ao Poke-App!</string>
+    <string name="abilities">Habilidades:</string>
+    <string name="informations">Atributos</string>
+    <string name="movements">Movimentos:</string>
 </resources>
