@@ -41,7 +41,7 @@ class AbilityAdapter : BaseAdapter {
             vh = view.tag as ViewHolder
         }
 
-        vh.abilityName.text = abilityList[position].name
+        vh.abilityName.text = abilityList[position].name!!.capitalize()
         return view
     }
 

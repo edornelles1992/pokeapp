@@ -25,8 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setCustomView(R.layout.header)
-        val p = ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        p.gravity = Gravity.CENTER
     }
 
     private fun findPokemonTypes() {

@@ -42,7 +42,7 @@ class MovementAdapter : BaseAdapter {
             vh = view.tag as ViewHolder
         }
 
-        vh.tvTitle.text = movementList[position].name
+        vh.tvTitle.text = movementList[position].name!!.capitalize()
 
         return view
     }

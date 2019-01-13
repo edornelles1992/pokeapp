@@ -42,7 +42,7 @@ class PokemonAdapter : BaseAdapter {
             vh = view.tag as ViewHolder
         }
 
-        vh.tvTitle.text = pokemonList[position].name
+        vh.tvTitle.text = pokemonList[position].name!!.capitalize()
         return view
     }
 

@@ -84,4 +84,10 @@
             android:id="@+id/listViewMovements" app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/textViewMovements"
             app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="23dp" tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="0dp" android:id="@+id/textViewShare"
+            android:drawableTop="@drawable/ic_share_black_24dp" android:onClick="onClickShare"
+            android:clickable="true"/>
 </android.support.constraint.ConstraintLayout>

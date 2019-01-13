@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.support.v7.app.ActionBar
 import android.util.Log
 import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
@@ -15,6 +17,7 @@ import com.eduardo.pokeapp.models.Ability
 import com.eduardo.pokeapp.models.Movement
 import com.eduardo.pokeapp.models.Pokemon
 import com.eduardo.pokeapp.services.PokeService
+import kotlinx.android.synthetic.main.activity_pokemon.*
 import kotlinx.android.synthetic.main.activity_pokemon_list.*
 import org.json.JSONObject
 
@@ -28,8 +31,6 @@ class PokemonListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pokemon_list)
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setCustomView(R.layout.header)
-        val p = ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        p.gravity = Gravity.CENTER
         this.renderTypeList(pokemons)
     }
 
