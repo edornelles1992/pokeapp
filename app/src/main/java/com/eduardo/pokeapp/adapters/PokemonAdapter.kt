@@ -43,8 +43,6 @@ class PokemonAdapter : BaseAdapter {
         }
 
         vh.tvTitle.text = pokemonList[position].name
-        vh.tvContent.text = pokemonList[position].url
-
         return view
     }
 
@@ -62,11 +60,9 @@ class PokemonAdapter : BaseAdapter {
 
     inner class ViewHolder(view: View?) {
         val tvTitle: TextView
-        val tvContent: TextView
 
         init {
             this.tvTitle = view?.findViewById(R.id.tvTitle) as TextView
-            this.tvContent = view?.findViewById(R.id.tvContent) as TextView
         }
     }
 }

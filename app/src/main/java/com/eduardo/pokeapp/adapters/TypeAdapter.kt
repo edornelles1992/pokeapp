@@ -1,14 +1,26 @@
 package com.eduardo.pokeapp.adapters
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import com.eduardo.pokeapp.R
 import com.eduardo.pokeapp.models.Type
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_pokemon.*
+import android.os.AsyncTask.execute
+import android.os.AsyncTask.execute
+import java.net.URI
+import java.net.URL
+import android.graphics.Bitmap
+import android.os.AsyncTask
+import java.io.IOException
 
 
 class TypeAdapter : BaseAdapter {
@@ -42,8 +54,10 @@ class TypeAdapter : BaseAdapter {
             vh = view.tag as ViewHolder
         }
 
-        vh.tvTitle.text = typesList[position].name
-        vh.tvContent.text = typesList[position].url
+        vh.tvTitle.text = typesList[position].name!!.capitalize()
+        val imageSource: String = Type.getImageType(typesList[position].name!!)!!
+        var imageBitmap = getImageBitmapFromURL(imageSource);
+        vh.tvImage.setImageBitmap(imageBitmap);
 
         return view
     }
@@ -60,13 +74,34 @@ class TypeAdapter : BaseAdapter {
         return typesList.size
     }
 
+    fun getImageBitmapFromURL(imageUrl: String?): Bitmap? {
+        var imageBitmap: Bitmap? = null
+        try {
+            imageBitmap = object : AsyncTask<Void, Void, Bitmap>() {
+                override fun doInBackground(vararg params: Void): Bitmap? {
+                    try {
+                        return Picasso.get().load(imageUrl).get()
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                    return null
+                }
+            }.execute().get()
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
+
+        return imageBitmap
+    }
+
+
     inner class ViewHolder(view: View?) {
         val tvTitle: TextView
-        val tvContent: TextView
+        val tvImage: ImageView
 
         init {
             this.tvTitle = view?.findViewById(R.id.tvTitle) as TextView
-            this.tvContent = view?.findViewById(R.id.tvContent) as TextView
+            this.tvImage = view?.findViewById(R.id.tvImage) as ImageView
         }
     }
 }

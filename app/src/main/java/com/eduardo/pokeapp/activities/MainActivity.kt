@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
         listViewType.adapter = typesAdapter
         listViewType.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, position, id ->
             this.findDetailsType(typesList[position].url!!)
-            Toast.makeText(this, "Click on " + typesList[position].name, Toast.LENGTH_SHORT).show()
         }
     }
 }

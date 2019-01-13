@@ -57,7 +57,6 @@ class PokemonListActivity : AppCompatActivity() {
         var pokemonsAdapter = PokemonAdapter(this, pokemonList, this.layoutInflater)
         listViewPokemon.adapter = pokemonsAdapter
         listViewPokemon.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, position, id ->
-            Toast.makeText(this, "Click on " + pokemonList[position].name, Toast.LENGTH_SHORT).show()
             this.findPokemonDetails(pokemonList[position])
         }
     }
