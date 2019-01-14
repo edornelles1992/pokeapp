@@ -5,6 +5,10 @@ import android.os.Parcelable
 import org.json.JSONArray
 import org.json.JSONObject
 
+/**
+ * Class representing a pokemon movement extends Parcelable
+ * to be able to pass the class object between Activities.
+ */
 class Movement : Parcelable {
 
     var name: String? = null
@@ -39,7 +43,7 @@ class Movement : Parcelable {
         }
 
         /**
-         * Convert JSON array of abilities received by request to a ArrayList<Ability>.
+         * Convert JSON array of movements received by request to a ArrayList<Movement>.
          */
         fun mountArrayMovements(data: JSONObject): ArrayList<Movement> {
             val moves = data.getJSONArray("moves")!! as JSONArray

@@ -66,7 +66,7 @@
             app:layout_constraintStart_toEndOf="@+id/textViewHeight"
             app:layout_constraintBottom_toTopOf="@+id/listViewAbilities"
             app:layout_constraintHorizontal_bias="0.701"
-            app:layout_constraintVertical_bias="0.689" style="@style/habilidades"/>
+            app:layout_constraintVertical_bias="0.966" style="@style/habilidades"/>
     <TextView
             android:text="@string/movements"
             android:layout_width="wrap_content"
@@ -85,9 +85,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewMovements"
             app:layout_constraintBottom_toBottomOf="parent"/>
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="23dp" tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="0dp" android:id="@+id/textViewShare"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/textViewShare"
             android:drawableTop="@drawable/ic_share_black_24dp" android:onClick="onClickShare"
-            android:clickable="true"/>
+            android:clickable="true" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="1.0"/>
 </android.support.constraint.ConstraintLayout>

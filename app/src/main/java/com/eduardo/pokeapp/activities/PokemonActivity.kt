@@ -4,7 +4,6 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.ActionBar
-import android.support.v7.widget.ShareActionProvider
 import android.view.*
 import com.eduardo.pokeapp.R
 import com.eduardo.pokeapp.adapters.AbilityAdapter
@@ -16,22 +15,19 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_pokemon.*
 import android.graphics.Bitmap
 import android.net.Uri
-import android.os.Environment
+import android.support.v4.app.FragmentActivity
 import com.tarek360.instacapture.Instacapture
 import com.tarek360.instacapture.listener.SimpleScreenCapturingListener
-import java.nio.file.Files.delete
-import java.nio.file.Files.exists
-import android.os.Environment.getExternalStorageDirectory
-import android.support.v4.app.FragmentActivity
 import android.util.Log
 import java.io.File
 import java.io.FileOutputStream
-import android.widget.Toast
-import android.webkit.MimeTypeMap
 import android.support.v4.content.FileProvider
 import java.io.IOException
 
-
+/**
+ * Pokemon detail activity. Shows the basic pokemon
+ * infos and the user can also share the pokemon status.
+ */
 class PokemonActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +39,10 @@ class PokemonActivity : AppCompatActivity() {
         this.renderContent(pokemon)
     }
 
+    /**
+     * Populate the activity components with the pokemon
+     * selected.
+     */
     private fun renderContent(pokemon: Pokemon) {
         textViewName.setText(pokemon.name?.capitalize())
         Picasso.get().load(pokemon.image).into(imageViewPokemon);
@@ -53,19 +53,19 @@ class PokemonActivity : AppCompatActivity() {
     }
 
     /**
-     * Method invoked when share icon is Pressed.
+     * Invoked when share icon is Pressed.
      * Call the instaCapture to get the image to be
      * saved and shared by the saveImage function.
      */
-    private fun onClickShare(view: View) {
+    fun onClickShare(view: View) {
+        textViewShare.setVisibility(View.INVISIBLE)
         Instacapture.capture(this, object : SimpleScreenCapturingListener() {
             override fun onCaptureComplete(bitmap: Bitmap) {
                saveImage(bitmap)
             }
         })
+        textViewShare.setVisibility(View.VISIBLE)
     }
-
-
 
     /**
      * Saves the image as PNG to the app's cache directory
@@ -104,13 +104,16 @@ class PokemonActivity : AppCompatActivity() {
     }
 
     /**
-     *
+     * Create the pokemon abilities listView.
      */
     private fun renderAbilityList(abilityList: ArrayList<Ability>) {
         var abilitiesAdapter = AbilityAdapter(this, abilityList, this.layoutInflater)
         listViewAbilities.adapter = abilitiesAdapter
     }
 
+    /**
+     * Create the pokemon movements listView.
+     */
     private fun renderMovementList(movementList: ArrayList<Movement>) {
         var movementsAdapter = MovementAdapter(this, movementList, this.layoutInflater)
         listViewMovements.adapter = movementsAdapter

@@ -31,6 +31,9 @@ class Type {
             return typesList
         }
 
+        /**
+         * Select an specific image to each type.
+         */
         fun getImageType(type: String): String? {
             val typeImage = when (type) {
                 "normal" -> "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png"

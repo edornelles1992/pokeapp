@@ -1,8 +1,6 @@
 package com.eduardo.pokeapp.adapters
 
 import android.content.Context
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +11,6 @@ import android.widget.TextView
 import com.eduardo.pokeapp.R
 import com.eduardo.pokeapp.models.Type
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_pokemon.*
-import android.os.AsyncTask.execute
-import android.os.AsyncTask.execute
-import java.net.URI
-import java.net.URL
 import android.graphics.Bitmap
 import android.os.AsyncTask
 import java.io.IOException

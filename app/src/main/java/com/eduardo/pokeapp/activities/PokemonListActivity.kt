@@ -4,25 +4,25 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.ActionBar
-import android.util.Log
-import android.view.Gravity
-import android.view.Menu
-import android.view.MenuItem
-import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.Toast
 import com.eduardo.pokeapp.R
 import com.eduardo.pokeapp.adapters.PokemonAdapter
 import com.eduardo.pokeapp.models.Ability
 import com.eduardo.pokeapp.models.Movement
 import com.eduardo.pokeapp.models.Pokemon
 import com.eduardo.pokeapp.services.PokeService
-import kotlinx.android.synthetic.main.activity_pokemon.*
 import kotlinx.android.synthetic.main.activity_pokemon_list.*
 import org.json.JSONObject
 
+/**
+ * Pokemon List Activity that shows the list
+ * of pokemons received by Intent.
+ */
 class PokemonListActivity : AppCompatActivity() {
 
+    /**
+     * List of pokemons.
+     */
     private lateinit var pokemons: ArrayList<Pokemon>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +31,13 @@ class PokemonListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pokemon_list)
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setCustomView(R.layout.header)
-        this.renderTypeList(pokemons)
+        this.renderPokemonsList(pokemons)
     }
 
+    /**
+     * Call PokeService to requests the selected pokemon
+     * details passing a callback to manage the received data.
+     */
     private fun findPokemonDetails(pokemon: Pokemon) {
         val callback = fun(data: JSONObject?) {
             if (data != null) {
@@ -54,7 +58,11 @@ class PokemonListActivity : AppCompatActivity() {
         PokeService.requestPokeApi(callback, pokemon.url!!)
     }
 
-    private fun renderTypeList(pokemonList: ArrayList<Pokemon>) {
+    /**
+     * Create the Pokemons listView with an received
+     * ArrayList<Pokemon>.
+     */
+    private fun renderPokemonsList(pokemonList: ArrayList<Pokemon>) {
         var pokemonsAdapter = PokemonAdapter(this, pokemonList, this.layoutInflater)
         listViewPokemon.adapter = pokemonsAdapter
         listViewPokemon.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, position, id ->

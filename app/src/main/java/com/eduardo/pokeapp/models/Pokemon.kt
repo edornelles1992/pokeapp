@@ -6,7 +6,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 /**
- * Class representing one Pokemon.
+ * Class representing one Pokemon extends Parcelable
+ * to be able to pass the class object between Activities.
  */
 class Pokemon() : Parcelable {
 
